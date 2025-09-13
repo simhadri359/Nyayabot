@@ -2,12 +2,15 @@
 import { GoogleGenAI, Part } from "@google/genai";
 import { Message } from '../types';
 
-if (!process.env.API_KEY) {
-    throw new Error("API_KEY environment variable is not set");
+// Get API key from environment variable or use the provided API key
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY || "AIzaSyAKsoR5Ri5E3sDcwhWm1QzGVdWGuRKTYCw";
+
+if (!apiKey || apiKey === "YOUR_GEMINI_API_KEY_HERE") {
+    console.warn("VITE_GEMINI_API_KEY environment variable is not set. Please set it in your .env.local file.");
+    console.warn("Get your API key from: https://aistudio.google.com/app/apikey");
 }
 
-// Fix: Initialize GoogleGenAI with a named apiKey parameter
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+const ai = new GoogleGenAI({ apiKey });
 
 export async function* sendMessageStream(
     history: Message[],
