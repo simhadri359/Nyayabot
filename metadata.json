@@ -1,0 +1,8 @@
+{
+  "name": "NyayaBot: Your Indian Law Assistant",
+  "description": "An AI-powered legal assistant to help students and citizens understand the Indian Constitution and important laws in simple, clear language.",
+  "requestFramePermissions": [
+    "microphone",
+    "camera"
+  ]
+}
